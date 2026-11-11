@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f7f4ee;
+  --ink: #14161c;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: #f7f4ee;
+  background-image:
+    radial-gradient(900px 520px at 10% -10%, rgba(199, 244, 100, 0.26), transparent 62%),
+    radial-gradient(820px 600px at 94% 2%, rgba(167, 139, 250, 0.14), transparent 64%),
+    radial-gradient(760px 520px at 50% 108%, rgba(94, 234, 212, 0.16), transparent 62%);
+  background-attachment: fixed;
+  color: #14161c;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(199, 244, 100, 0.55);
+  color: #14161c;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 22, 28, 0.22) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(20, 22, 28, 0.2);
+  border-radius: 999px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink/[0.09] bg-white shadow-[0_1px_0_rgba(20,22,28,0.03),0_14px_34px_-26px_rgba(20,22,28,0.45)];
+  }
+  .card-paper {
+    @apply rounded-2xl border border-ink/[0.09] bg-[#fffdf8] text-[#14161c] shadow-[0_1px_0_rgba(20,22,28,0.03),0_14px_34px_-28px_rgba(20,22,28,0.4)];
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-limeDeep/40 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn border border-ink/10 bg-lime text-ink shadow-[0_1px_2px_rgba(20,22,28,0.08)] hover:brightness-[0.97] active:brightness-[0.93];
+  }
+  .btn-ghost {
+    @apply btn border border-ink/15 bg-white text-ink hover:bg-ink/[0.05];
+  }
+  .btn-quiet {
+    @apply btn text-ink/65 hover:bg-ink/[0.06] hover:text-ink;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-ink/60;
+  }
+  .pill-lime {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-lime/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#42580b];
+  }
+  .field {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-3.5 py-2.5 text-sm text-ink
+      placeholder:text-ink/35 focus:border-tealDeep/50 focus:outline-none focus:ring-1 focus:ring-tealDeep/25;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-ink/45;
+  }
+  .section-title {
+    @apply font-serif text-3xl leading-tight text-ink sm:text-4xl;
+  }
+  .prose-ielts {
+    @apply text-[15px] leading-7 text-ink/70;
+  }
+  .prose-ielts p {
+    @apply mb-4;
+  }
+  .prose-ielts strong {
+    @apply text-ink;
+  }
+  .passage-body {
+    @apply font-serif text-[15.5px] leading-[1.85] text-[#23262e];
+  }
+  .link-underline {
+    @apply underline decoration-limeDeep/40 decoration-2 underline-offset-4 hover:decoration-limeDeep;
+  }
+  .answer-input {
+    @apply w-40 rounded-md border-b-2 border-[#14161c]/25 bg-transparent px-1 pb-0.5 text-center text-sm
+      text-[#14161c] placeholder:text-[#14161c]/30 focus:border-tealDeep focus:outline-none;
+  }
+  .tab {
+    @apply rounded-lg px-3 py-1.5 text-[13px] font-semibold text-ink/55 transition hover:text-ink;
+  }
+  .tab-active {
+    @apply bg-ink/[0.08] text-ink;
+  }
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(rgba(20, 22, 28, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 22, 28, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.35s ease both;
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.rec-dot {
+  animation: pulseRing 1.4s ease-in-out infinite;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
